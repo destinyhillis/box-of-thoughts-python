@@ -34,6 +34,7 @@ class BoardContainer extends Component {
     };
 
     createBoard = async (formData) => {
+        console.log(formData, 'form data in create board')
         const newBoard = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/api/v1/boards`, {
             credentials: 'include',
             method: "POST",
@@ -43,6 +44,7 @@ class BoardContainer extends Component {
             }
         })
         const parsedResponse = await newBoard.json();
+        console.log(parsedResponse, 'parsed response in create board')
         // if(newBoard.status === 200){
             this.setState({
                 boards: [parsedResponse, ...this.state.boards]
